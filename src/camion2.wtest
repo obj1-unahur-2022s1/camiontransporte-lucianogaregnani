@@ -1,0 +1,14 @@
+import cosas2.*
+import camion2.*
+
+test "total bustos" {
+	paqueteLadrillos.cantidadDeLadrillos(205)
+	bateriaAntiarea.estaConMisiles(true)
+	contenedor.agregarCosa(bumblebee)
+	camion.cargar(bumblebee)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(contenedor)
+	assert.equals(10 ,camion.totalBultos())
+}

@@ -1,0 +1,39 @@
+import camion2.*
+import cosas2.*
+
+test "cambios bumblebee" {
+	camion.cargar(bumblebee)
+	assert.notThat(bumblebee.esUnAuto())
+}
+
+test "cambios paqueteLadrillos" {
+	paqueteLadrillos.cantidadDeLadrillos(45)
+	camion.cargar(paqueteLadrillos)
+	assert.equals(57 ,paqueteLadrillos.cantidadDeLadrillos())
+}
+
+test "cambios arena" {
+	camion.cargar(arena)
+	assert.equals(20 , arena.peso())		
+}
+
+test "cambios bateria Antiarea" {
+	camion.cargar(bateriaAntiarea)
+	assert.that(bateriaAntiarea.estaConMisiles())	
+}
+
+test "cambios contenedor" {
+	paqueteLadrillos.cantidadDeLadrillos(45)
+	contenedor.agregarCosa(paqueteLadrillos)
+	contenedor.agregarCosa(arena)
+	camion.cargar(contenedor)
+	assert.equals(57 ,paqueteLadrillos.cantidadDeLadrillos())
+	assert.equals(20 , arena.peso())	
+	
+}
+
+test "cambios residuos radioactivos" {
+	camion.cargar(residuosRadioactivos)
+	assert.equals(15, residuosRadioactivos.peso())
+}
+

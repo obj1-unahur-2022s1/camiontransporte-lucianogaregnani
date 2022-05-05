@@ -1,3 +1,162 @@
 import camion.*
 import cosas.*
 
+test "camion TodoPesoPar" { 
+	bumblebee.esUnAuto(false)
+	arena.peso(150)
+	bateriaAntiarea.estaConMisiles(true)
+	paqueteLadrillos.cantidadDeLadrillos(80)
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.that(camion.todoPesoPar())
+}
+
+test "camion hayAlgunoQuePesa" {
+	bumblebee.esUnAuto(false)
+	arena.peso(150)
+	bateriaAntiarea.estaConMisiles(true)
+	paqueteLadrillos.cantidadDeLadrillos(80)
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.notThat(camion.hayAlgunoQuePesa(80))	
+	assert.that(camion.hayAlgunoQuePesa(300))
+}
+
+test "camion elDeNivel" {
+	bumblebee.esUnAuto(false)
+	arena.peso(150)
+	bateriaAntiarea.estaConMisiles(true)
+	paqueteLadrillos.cantidadDeLadrillos(80)
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals(bumblebee, camion.elDeNivel(30))
+	assert.equals(bateriaAntiarea, camion.elDeNivel(100))	
+}
+
+test "camion pesoTotal" {
+	bumblebee.esUnAuto(false)
+	arena.peso(150)
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals(2570 ,camion.pesoTotal())	
+}
+
+test "camion excedidoDePeso" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)	
+	assert.that(camion.excedidoDePeso())
+}
+
+test "camion objetosQueSuperanPeligrosidad" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals([bateriaAntiarea, bumblebee].asSet(), camion.objetosQueSuperanPeligrosidad(29).asSet())
+}
+
+test "camion objetosMasPeligrososQue" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals([bumblebee, bateriaAntiarea, paqueteLadrillos].asSet(), camion.objetosMasPeligrososQue(arena).asSet())	
+}
+
+test "camion puedeCircularEnRuta" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.notThat(camion.puedeCircularEnRuta(100))	
+}
+
+test "camion tieneAlgoQuePesaEntre" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.that(camion.tieneAlgoQuePesaEntre(151, 200))	
+}
+
+test "camion cosaMasPesada" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals(bumblebee ,camion.cosaMasPesada())	
+}
+
+test "camion pesos" {
+	bumblebee.esUnAuto(false) 
+	arena.peso(150) 
+	bateriaAntiarea.estaConMisiles(true) 
+	paqueteLadrillos.cantidadDeLadrillos(80) 
+	embalajeSeguridad.contener(paqueteLadrillos)
+	camion.cargar(bumblebee)
+	camion.cargar(arena)
+	camion.cargar(bateriaAntiarea)
+	camion.cargar(paqueteLadrillos)
+	camion.cargar(embalajeSeguridad)
+	assert.equals([800, 150, 300, 160, 160].asSet() ,camion.pesos().asSet())	
+}
+
+
+
+
